@@ -239,15 +239,15 @@ MHC_pb <- pass_both_plusZ[grepl("H2-",pass_both_plusZ$ligand),] %>% group_by(lig
 
 df.plotfull<-full_join(df.plot,MHC_pb) %>% group_by(ligand_cluster, receptor_cluster) 
 
-Tcell_dotZ2<-df.plot %>%
+Tcell_dotZ2<-df.plot %>% filter(receptor_expr >0.5) %>%
   ggplot() +
-  aes(x=receptor_cluster,y=paste(ligand,"->",receptor), size = ligand_Z, color = receptor_Z) +
+  aes(x=receptor_cluster,y=paste(ligand,"->",receptor), size = log2(ligand_expr), color = log2(receptor_expr)) +
   scale_color_gradient(low = "blue", high = "red") +
   geom_point() +
   facet_grid(.~ligand_cluster, scales = "free_x") +
   theme_linedraw() +
   theme(axis.text.x = element_text(angle = 90, size=10, vjust = .4,hjust = 1), axis.text.y = element_text(size=10)) +
-  labs(x="Target cells", y="Ligand/Receptor complex", color = "Receptor Expression (Z-score)", size = "Ligand Expression (Z-score)")
+  labs(x="Target cells", y="Ligand/Receptor complex", color = "Log2 Receptor Expression", size = "Log2 Ligand Expression")
 Tcell_dotZ2
 
 #save interactions to excel
