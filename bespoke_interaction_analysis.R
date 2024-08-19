@@ -6,7 +6,6 @@ library(magrittr)
 library(openxlsx)
 library(SCpubr)
 
-#Was actually Spleen and Lymph together
 #Receptors for T cells
 #ligands for DCs
 
