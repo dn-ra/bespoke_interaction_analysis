@@ -11,8 +11,7 @@ library(SCpubr)
 #ligands for DCs
 
 ###
-#This produces outputs for Spleen data. To analyse Lymph Node data, change `Spleen` on lines 177 and 179 to `LN`
-###
+#This produces outputs for Spleen and Lymph together
 
 ##Load Data ##
 seu_T <- readRDS('seu_Tcell.Rds')
